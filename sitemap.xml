@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://localizamaps.com.br/</loc>
+    <loc>https://localizamaps.vercel.app/</loc>
     <lastmod>2024-05-20</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://localizamaps.vercel.app/#cadastro-google-maps</loc>
+    <lastmod>2024-05-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://localizamaps.vercel.app/#como-colocar-empresa-no-google-maps</loc>
+    <lastmod>2024-05-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://localizamaps.vercel.app/#google-maps-para-pequenos-negocios</loc>
+    <lastmod>2024-05-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://localizamaps.vercel.app/#empresa-nao-aparece-no-google-maps</loc>
+    <lastmod>2024-05-20</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://localizamaps.vercel.app/#cadastro-google-maps-sao-paulo</loc>
+    <lastmod>2024-05-20</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://localizamaps.vercel.app/#cadastro-google-maps-rio-de-janeiro</loc>
+    <lastmod>2024-05-20</lastmod>
+    <priority>0.7</priority>
   </url>
 </urlset>
