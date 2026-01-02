@@ -6,10 +6,12 @@ import SolutionSection from './components/SolutionSection';
 import HowItWorks from './components/HowItWorks';
 import Pricing from './components/Pricing';
 import Authority from './components/Authority';
+import Guarantee from './components/Guarantee';
 import Testimonials from './components/Testimonials';
 import CTASection from './components/CTASection';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
 
 const App: React.FC = () => {
   return (
@@ -21,12 +23,14 @@ const App: React.FC = () => {
         <SolutionSection />
         <HowItWorks />
         <Pricing />
+        <Guarantee />
         <Authority />
         <Testimonials />
         <CTASection />
         <FAQ />
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </div>
   );
 };

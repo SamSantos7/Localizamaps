@@ -1,11 +1,11 @@
 import React from 'react';
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'outline';
   children: React.ReactNode;
   href: string;
-  icon?: 'whatsapp' | 'email' | 'arrow';
+  icon?: 'whatsapp' | 'arrow';
   className?: string;
 }
 
@@ -20,10 +20,6 @@ const Button: React.FC<ButtonProps> = ({ variant = 'primary', children, href, ic
 
   const IconComponent = () => {
     if (icon === 'arrow') return <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />;
-    if (icon === 'email') return <Mail className="w-5 h-5 mr-2" />;
-    // Simple SVG for WhatsApp to avoid heavy icon library dependency for just one logo if preferred, 
-    // but using Lucide maps generally works well. We'll use a custom SVG for specific brand icons if needed, 
-    // but here we will simulate it or use text.
     return null;
   };
 
@@ -34,7 +30,6 @@ const Button: React.FC<ButtonProps> = ({ variant = 'primary', children, href, ic
       rel="noopener noreferrer"
       className={`${baseStyles} ${variants[variant]} ${className}`}
     >
-      {icon === 'email' && <IconComponent />}
       {children}
       {icon === 'arrow' && <IconComponent />}
     </a>
