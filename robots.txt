@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://localizamaps.com.br/sitemap.xml
