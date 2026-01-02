@@ -12,12 +12,8 @@ export const BRAND = {
 };
 
 export const PAYMENT_INFO = {
-  PIX_KEY: 'samuelse7@gmail.com',
-  PIX_TYPE: 'E-mail',
-  BANK_NAME: 'Banco Nubank', // Ajuste conforme seu banco real
-  OWNER_NAME: 'Samuel S.', // Ajuste para o nome titular da conta
-  // Substitua os links abaixo pelos seus links reais de pagamento (MP, Stripe, PagSeguro, etc)
-  CARD_LINK_ESSENCIAL: 'https://link-de-pagamento-essencial.com', 
-  CARD_LINK_VISIBILIDADE: 'https://link-de-pagamento-visibilidade.com',
-  CARD_LINK_DESTAQUE: 'https://link-de-pagamento-destaque.com',
+  PIX_KEY: '00020101021126330014br.gov.bcb.pix0111051710867455204000053039865802BR5921SAMUEL L F DOS SANTOS6013RIO DE JANEIR62070503***63040572',
+  PIX_TYPE: 'CPF',
+  BANK_NAME: 'Banco Inter',
+  OWNER_NAME: 'Samuel L F Dos Santos',
 };

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Check, X } from 'lucide-react';
-import Button from './Button';
 import PaymentModal from './PaymentModal';
-import { PAYMENT_INFO } from '../constants';
 
 const plans = [
   {
@@ -21,7 +19,6 @@ const plans = [
       "Avaliações"
     ],
     highlight: false,
-    paymentLink: PAYMENT_INFO.CARD_LINK_ESSENCIAL
   },
   {
     name: "Visibilidade Local",
@@ -35,7 +32,6 @@ const plans = [
     ],
     highlight: true,
     tag: "Recomendado",
-    paymentLink: PAYMENT_INFO.CARD_LINK_VISIBILIDADE
   },
   {
     name: "Destaque Local",
@@ -49,7 +45,6 @@ const plans = [
       "2 Avaliações Relevantes (Apoio inicial)"
     ],
     highlight: false,
-    paymentLink: PAYMENT_INFO.CARD_LINK_DESTAQUE
   }
 ];
 

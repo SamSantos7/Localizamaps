@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { X, Copy, Check, CreditCard, QrCode, MessageCircle } from 'lucide-react';
+import { X, Copy, Check, QrCode, MessageCircle } from 'lucide-react';
 import { PAYMENT_INFO, CONTACT_INFO } from '../constants';
 
 interface Plan {
   name: string;
   price: string;
-  paymentLink?: string;
 }
 
 interface PaymentModalProps {
@@ -16,7 +15,6 @@ interface PaymentModalProps {
 
 const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, plan }) => {
   const [copied, setCopied] = useState(false);
-  const [activeTab, setActiveTab] = useState<'pix' | 'card'>('pix');
 
   if (!isOpen || !plan) return null;
 
@@ -51,94 +49,53 @@ const PaymentModal: React.FC<PaymentModalProps> = ({ isOpen, onClose, plan }) =>
           </button>
         </div>
 
-        {/* Tabs */}
-        <div className="flex border-b border-slate-100">
-          <button
-            onClick={() => setActiveTab('pix')}
-            className={`flex-1 py-3 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${
-              activeTab === 'pix' 
-                ? 'text-emerald-600 border-b-2 border-emerald-600 bg-emerald-50/30' 
-                : 'text-slate-500 hover:text-slate-700'
-            }`}
-          >
-            <QrCode size={18} />
-            PIX (Aprovação Imediata)
-          </button>
-          <button
-            onClick={() => setActiveTab('card')}
-            className={`flex-1 py-3 text-sm font-medium flex items-center justify-center gap-2 transition-colors ${
-              activeTab === 'card' 
-                ? 'text-blue-600 border-b-2 border-blue-600 bg-blue-50/30' 
-                : 'text-slate-500 hover:text-slate-700'
-            }`}
-          >
-            <CreditCard size={18} />
-            Cartão de Crédito
-          </button>
+        {/* PIX Title Section */}
+        <div className="flex bg-emerald-50/30 border-b border-emerald-100 py-3 px-6 items-center gap-2 text-emerald-700 font-semibold text-sm">
+          <QrCode size={18} />
+          Pagamento via PIX (Copia e Cola)
         </div>
 
         {/* Content */}
         <div className="p-6">
-          {activeTab === 'pix' ? (
-            <div className="space-y-6">
-              <div className="text-center space-y-2">
-                <p className="text-sm text-slate-600">Utilize a chave abaixo para pagar via PIX:</p>
-                <div className="flex items-center gap-2 bg-slate-100 p-3 rounded-lg border border-slate-200">
-                  <span className="flex-grow text-slate-900 font-mono text-sm truncate text-left">
-                    {PAYMENT_INFO.PIX_KEY}
-                  </span>
+          <div className="space-y-6">
+            <div className="text-center space-y-3">
+              <p className="text-sm text-slate-600">Copie o código abaixo para pagar via seu aplicativo bancário:</p>
+              <div className="bg-slate-100 p-4 rounded-lg border border-slate-200 relative group">
+                <p className="text-slate-900 font-mono text-[10px] break-all text-left max-h-24 overflow-y-auto pr-2">
+                  {PAYMENT_INFO.PIX_KEY}
+                </p>
+                <div className="mt-3 flex justify-end">
                   <button 
                     onClick={handleCopyPix}
-                    className="text-emerald-600 hover:text-emerald-700 p-1 font-medium text-sm flex items-center gap-1 transition-colors"
+                    className="bg-emerald-600 text-white px-4 py-2 rounded-md font-medium text-xs flex items-center gap-2 transition-all hover:bg-emerald-700 shadow-sm active:scale-95"
                   >
-                    {copied ? <Check size={16} /> : <Copy size={16} />}
-                    {copied ? 'Copiado' : 'Copiar'}
+                    {copied ? <Check size={14} /> : <Copy size={14} />}
+                    {copied ? 'Código Copiado' : 'Copiar Código PIX'}
                   </button>
                 </div>
               </div>
-
-              <div className="text-xs text-slate-500 space-y-1 bg-slate-50 p-3 rounded-lg">
-                <p><span className="font-semibold">Banco:</span> {PAYMENT_INFO.BANK_NAME}</p>
-                <p><span className="font-semibold">Nome:</span> {PAYMENT_INFO.OWNER_NAME}</p>
-                <p><span className="font-semibold">Tipo:</span> {PAYMENT_INFO.PIX_TYPE}</p>
-              </div>
-
-              <div className="pt-2 border-t border-slate-100 text-center">
-                 <p className="text-sm text-slate-600 mb-4">Após o pagamento, envie o comprovante:</p>
-                 <a 
-                   href={whatsappLink}
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   className="flex items-center justify-center gap-2 w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-medium transition-all shadow-md hover:shadow-lg"
-                 >
-                   <MessageCircle size={18} />
-                   Enviar Comprovante via WhatsApp
-                 </a>
-              </div>
             </div>
-          ) : (
-            <div className="space-y-6 text-center py-4">
-              <div className="bg-blue-50 rounded-full w-16 h-16 flex items-center justify-center mx-auto text-blue-600 mb-4">
-                <CreditCard size={32} />
-              </div>
-              <p className="text-slate-600 text-sm">
-                Para pagar com cartão de crédito, clique no botão abaixo para ser redirecionado ao nosso gateway seguro.
-              </p>
-              
-              <a 
-                href={plan.paymentLink || '#'}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center w-full py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-all shadow-md hover:shadow-lg"
-              >
-                Pagar com Cartão
-              </a>
 
-              <p className="text-xs text-slate-400 mt-4">
-                Após finalizar, você será redirecionado ou receberá contato da nossa equipe.
-              </p>
+            <div className="text-xs text-slate-500 space-y-1 bg-slate-50 p-4 rounded-lg border border-slate-100">
+              <p><span className="font-semibold text-slate-700">Banco:</span> {PAYMENT_INFO.BANK_NAME}</p>
+              <p><span className="font-semibold text-slate-700">Nome:</span> {PAYMENT_INFO.OWNER_NAME}</p>
+              <p><span className="font-semibold text-slate-700">Tipo de Chave:</span> {PAYMENT_INFO.PIX_TYPE}</p>
             </div>
-          )}
+
+            <div className="pt-2 border-t border-slate-100 text-center">
+               <p className="text-sm text-slate-600 mb-4 font-medium">Após o pagamento, envie o comprovante para iniciarmos:</p>
+               <a 
+                 href={whatsappLink}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="flex items-center justify-center gap-2 w-full py-4 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-bold transition-all shadow-md hover:shadow-lg"
+               >
+                 <MessageCircle size={20} fill="currentColor" />
+                 Enviar Comprovante no WhatsApp
+               </a>
+               <p className="text-[10px] text-slate-400 mt-4 uppercase tracking-widest font-bold">Liberação imediata após envio</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
